@@ -1,0 +1,35 @@
+<div class="collection">
+  {% paginate collection.products by 2 %} {% for product in collection.products
+  %}
+
+  <div class="product">
+    <a href="{{ product.url | within: collection }}">
+      <img
+        src="{{ product.featured_image.src | img_url: '1200x1200',  crop: 'center' }}"
+        alt="{{ product.featured_image.alt | escape }}"
+      />
+
+      <div>
+        <p>{{ product.title }}</p>
+        <p class="grey">{{ product.price | money_without_trailing_zeros }}</p>
+        {% unless product.available %}
+        <p><em>vyprodáno!</em></p>
+        {% endunless %}
+      </div>
+    </a>
+  </div>
+
+  {% else %}
+
+  <p>no matches</p>
+
+  {% endfor %} {% if paginate.pages > 1 %}
+  {{ paginate | default_pagination }}
+  {% endif %} {% endpaginate %}
+</div>
+
+<div class="text break">
+  {{ collection.description }}
+</div>
+
+{% include 'contact' %}

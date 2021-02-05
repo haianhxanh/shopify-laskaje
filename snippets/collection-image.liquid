@@ -1,0 +1,19 @@
+<div class="collection-image-wrapper">
+  {% for collection in collections %} {%if collection.title contains 'test' %}
+
+  <div class="collection-image">
+    <a href="{{ collection.url }}">
+      <div class="collection-image__item">
+        <img
+          src="{{ collection.image | img_url: 'large' }}"
+          alt="{{ collection.title }}"
+        />
+        <div class="collection-image__title">
+          <p>{{ collection.title | remove: "_test" }}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  {% endif %} {% endfor %}
+</div>

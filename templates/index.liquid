@@ -1,0 +1,56 @@
+<div class="homepage">
+  {% for collection in collections reversed %} {%if collection.title contains
+  'test' %}
+
+  <!-- <h1>{{ collection.title | remove: "_test" }}</h1> -->
+  <div class="grid-wrapper">
+    <div class="{{ collection.title }}">
+      {% for product in collection.products %}
+      <div class="product">
+        <a href="{{ product.url | within: collection }}">
+          <img
+            src="{{ product.featured_image.src | img_url: '1200x1200' }}"
+            alt="{{ product.featured_image.alt | escape }}"
+          />
+
+          <!-- <div>
+            <p class="product-title">{{ product.title }}</p>
+            <p class="grey product-price">
+              {{ product.price | money_without_trailing_zeros }}
+            </p>
+            {% unless product.available %}
+            <p><em>vyprodáno!</em></p>
+            {% endunless %}
+          </div> -->
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {%endif%} {% endfor %}
+</div>
+
+<div class="text break intro">
+  <p>
+    Rozhodli jsme se udělat si na konci léta radost. S láskou k DobroDružným
+    kresbám Sáry Voříškové a ke grafice Jakuba Straky, kterou všichni milujeme.
+  </p>
+  <p>
+    Máme tři pánská trika, Dobrodruh, do duší a Láska je. A ty stejná dámská, v
+    unisex a holčičím provedení. Trika jsou minimalistická, lehoučká a krásná.
+    Stoprocentně bavlněná, ekologická, s veganským a fair wear certifikátem. Na
+    těle jako vánek. Nejde nám o rychlou módu, udělali jsme na začátek pouze tři
+    sta kusů. Chceme, abyste je milovali nosit a aby vám dlouho vydržela. Já
+    jsem svoje testovala déle než rok, a barva, materiál, střih, nic se
+    nezměnilo ani po tisícém praní, borůvkách a šestinedělí. Mimochodem, v
+    dámské verzi se výborně kojí. Chtěli jsme je udělat přesně tak, jak bychom
+    je nosili my. Možná je cena trochu vyšší než v řetězci, ale věříme v pomalou
+    módu a že toho člověk v životě potřebuje spíš míň a aby mu to dlouho
+    vydrželo. To, že naše oblečení vyráběl někdo za solidních podmínek pro nás
+    bylo velmi důležité.
+  </p>
+  <p>Užijte si je. Na O sobě.</p>
+</div>
+
+{% include 'contact' %}

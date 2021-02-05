@@ -1,0 +1,11 @@
+{%- assign collection = collections[section.settings.collection] -%} {% for
+product in collection %}
+
+<img
+  src="{{ product.featured_image.src | img_url: '1200x1200',  crop: 'center' }}"
+  alt="{{ product.featured_image.alt | escape }}"
+/>
+
+{% endfor %} {% schema %} { "name": "collection-section", "settings": [ {
+"type": "collection", "id": "collection", "label": "Featured collection" } ] }
+{% endschema %}

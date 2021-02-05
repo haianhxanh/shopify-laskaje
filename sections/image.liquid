@@ -1,0 +1,20 @@
+<img class="image" src="{{ section.settings.image | img_url: 'large' }}" />
+
+{% schema %}
+  {
+    "name": "Image",
+    "settings": [
+      {
+        "type": "image_picker", 
+        "id": "image", 
+        "label": "Upload image"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

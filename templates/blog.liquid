@@ -1,0 +1,37 @@
+<div class="blog-list">
+
+  {% paginate blog.articles by 20 %}
+
+  {% for article in blog.articles %}
+
+    {% assign image_src=article.image.src | img_url: 'large' %}
+
+    <div class="blog-list-post">
+      <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
+
+      <!-- <img src="{{ image_src }}"> -->
+
+      <div>
+        {{ article.content }}
+      </div>
+    </div>
+
+  {% endfor %}
+
+  {% if paginate.pages > 1 %}
+    {{ paginate | default_pagination }}
+  {% endif %}
+
+  {% endpaginate %}
+
+</div>
+
+<div class="text">
+  <p>Do duší není typický podcast. Vznikl jako odpověď na karanténu v době korona viru. </p>
+  <p>Na začátku jsem četla na svém instagramovém profilu každý den živě pro naše hrdiny v ulicích, tedy pro lékaře, zdravotní sestry, prodavačky, řidiče i všechny ostatní, ze svojí knihy DobroDruhům. S cílem povzbudit a rozveselit lid, když už my, co nezachraňujeme životy, musíme sedět doma.</p>
+  <p>Sociální síťe nám ale nestačili, chtěli jsme být lidem blíž, chtěli jsme lepší kvalitu zvuku, mít čas ponořit se do hloubky a také, na žádost publika, mít možnost čtení zachovávat, aby si to lidé mohli pouštět i zpětně. </p>
+  <p>A tak jsme si vymysleli DoDuší. Domácí manželské hovory, nahrávané u nás v obýváku, který jsem přestavěla na studio. Cíl a forma zůstali stejné. Povídáme si o tématech, která nás baví, čteme a probíráme se tím, co nás zrovna zaujalo, od básní od Kundery až po nejšílenější akrobatické pády. S touhou poslat do uší,  těm co to potřebují, něco o duši. Povídání, které slyšíte tak, jak by probíhalo i bez mikrofonů. Nedokonalé. Hravé. A naše. Do Duší. Živě. Stříháme jen, když Slunce potřebuje pomazlit. Nebo když mě volá vývar. Vítejte u nás doma. Připravte si čaj s medem a citronem, jedinou věc, kterou k poslechu potřebujete. Odpočinte si. A nezapomínejte že.. láska je.</p>
+</div>
+
+
+{% include 'contact' %}

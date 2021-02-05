@@ -1,0 +1,23 @@
+<div class="homepage">
+  {% assign product_collection = product.collections.first %} {% for product in
+  product_collection.products limit:20 %}
+
+  <div class="product">
+    <a href="{{ product.url | within: collection }}">
+      <img
+        src="{{ product.featured_image.src | img_url: '1200x1200',  crop: 'center' }}"
+        alt="{{ product.featured_image.alt | escape }}"
+      />
+
+      <div>
+        <p>{{ product.title }}</p>
+        <p class="grey">{{ product.price | money_without_trailing_zeros }}</p>
+        {% unless product.available %}
+        <p><em>vyprodáno!</em></p>
+        {% endunless %}
+      </div>
+    </a>
+  </div>
+
+  {% endfor %}
+</div>

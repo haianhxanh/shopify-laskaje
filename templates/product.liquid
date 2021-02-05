@@ -1,0 +1,61 @@
+{% assign current_variant = product.selected_or_first_available_variant %} {%
+assign featured_image = current_variant.featured_image | default:
+product.featured_image %}
+
+<div class="product-page container">
+  <div class="col-half">
+    {% for image in product.images %}
+    <img
+      src="{{ image.src | img_url: '1500x' }}"
+      alt="{{ image.alt | escape }}"
+    />
+    {% endfor %}
+  </div>
+
+  <div class="sticky col-half">
+    <h2>
+      {{ product.title }}
+      <br />
+      <span class="grey">{{
+        current_variant.price | money_without_trailing_zeros
+      }}</span>
+    </h2>
+
+    <div class="description">{{ product.description }}</div>
+
+    <form
+      action="/cart/add"
+      method="post"
+      enctype="multipart/form-data"
+      id="AddToCartForm"
+    >
+    <div class="book-note-wrapper">
+        {% if product.type == "book" %}
+        <p class="line-item-property__field">
+          <div><label for="book-note">Věnování</label></div>
+          <textarea id="book-note" name="properties[Věnování]"></textarea>
+        </p>
+        {% endif %}
+    </div>
+
+      <select name="id" id="productSelect">
+        {% for variant in product.variants %} {% if variant.available %}
+        <option value="{{ variant.id }}">
+          {{ variant.title }} - {{ variant.price | money_with_currency }}
+        </option>
+        {% else %}
+        <option disabled="disabled">{{ variant.title }} - sold out</option>
+        {% endif %} {% endfor %}
+      </select>
+
+      <!-- <p><label for="Quantity">pocet kusu</label><input type="number" id="Quantity" name="quantity" value="1" min="1"></p> -->
+
+      <button type="submit" name="add" id="AddToCart">Koupit!</button>
+    </form>
+  </div>
+</div>
+
+{% include 'logo' %}
+<!-- {% include 'products' %} -->
+
+{% include 'collection-image' %} {% include 'contact' %}
