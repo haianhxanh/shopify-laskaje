@@ -2,16 +2,30 @@
   {% for collection in collections reversed %} {%if collection.title contains
   'test' %}
 
-  <!-- <h1>{{ collection.title | remove: "_test" }}</h1> -->
   <div class="grid-wrapper">
     <div class="{{ collection.title }}">
       {% for product in collection.products %}
+
       <div class="product">
         <a href="{{ product.url | within: collection }}">
           <img
             src="{{ product.featured_image.src | img_url: '1200x1200' }}"
             alt="{{ product.featured_image.alt | escape }}"
           />
+          <div class="product-info-wrapper">
+            <div class="product-info">
+              {% if product.title contains 'dámské' %}
+              <div class="product-info__title">dámské</div>
+              {% elsif product.title contains 'unisex' %}
+              <div class="product-info__title">unisex</div>
+              {% elsif product.title contains 'dětské' %}
+              <div class="product-info__title">kid</div>
+              {% endif %}
+              <div class="product-info__price">
+                {{ product.price | money_without_trailing_zeros }}
+              </div>
+            </div>
+          </div>
 
           <!-- <div>
             <p class="product-title">{{ product.title }}</p>

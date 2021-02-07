@@ -33,7 +33,7 @@ product.featured_image %}
         {% if product.type == "book" %}
         <p class="line-item-property__field">
           <div><label for="book-note">Věnování</label></div>
-          <textarea id="book-note" name="properties[Věnování]"></textarea>
+          <textarea id="book-note" maxlength="100" name="properties[Věnování]" placeholder="Pokud si přejete věnování do knihy, zde napište krátký text do 100 znaků včetně mezer."></textarea>
         </p>
         {% endif %}
     </div>

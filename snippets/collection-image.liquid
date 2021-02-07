@@ -9,7 +9,13 @@
           alt="{{ collection.title }}"
         />
         <div class="collection-image__title">
-          <p>{{ collection.title | remove: "_test" }}</p>
+          {%if collection.title == "books_test" %}
+          <p>knihy</p>
+          {% elsif collection.title == "hoodies_test" %}
+          <p>mikiny</p>
+          {% elsif collection.title == "shirts_test" %}
+          <p>trička</p>
+          {%endif%}
         </div>
       </div>
     </a>
